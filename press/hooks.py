@@ -52,6 +52,11 @@ version = app_version
 # automatically create page for each record of this doctype
 # website_generators = ["Web Page"]
 
+website_route_rules = [
+	{"from_route": "/invoices/<path:name>/pay", "to_route": "invoice_payment_url"},
+	{"from_route": "/invoices/<path:name>", "to_route": "invoices"},
+]
+
 # Installation
 # ------------
 
