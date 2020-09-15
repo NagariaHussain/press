@@ -72,7 +72,9 @@
   "column_break_65",
   "telegram_bot_token",
   "product_documentation_section",
-  "publish_docs"
+  "publish_docs",
+  "notifications_section",
+  "notify_after_quota_consumed_by"
  ],
  "fields": [
   {
@@ -439,12 +441,23 @@
    "fieldname": "product_documentation_section",
    "fieldtype": "Section Break",
    "label": "Product Documentation"
+  },
+  {
+   "fieldname": "notifications_section",
+   "fieldtype": "Section Break",
+   "label": "Notifications"
+  },
+  {
+   "default": "80",
+   "fieldname": "notify_after_quota_consumed_by",
+   "fieldtype": "Int",
+   "label": "Notify Users After Usage Quota Consumed Percent"
   }
  ],
  "issingle": 1,
  "links": [],
- "modified": "2020-08-17 21:48:01.198091",
- "modified_by": "faris@erpnext.com",
+ "modified": "2020-09-15 16:06:16.691556",
+ "modified_by": "Administrator",
  "module": "Press",
  "name": "Press Settings",
  "owner": "Administrator",

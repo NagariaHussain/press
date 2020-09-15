@@ -1,0 +1,31 @@
+{% import "templates/emails/macros.html" as utils %}
+{% extends "templates/emails/base.html" %}
+
+{% block content %}
+
+<td class="text-base leading-6 text-gray-900">
+	<div class="p-8 bg-white">
+		<p class="mb-4 font-bold">
+			{{ subject }}
+		</p>
+		<p class="mb-6">
+			Sites from your Frappe Cloud account have reached {{ percentage }}% of the usage limit.
+		</p>
+		<p class="mb-6">
+			You can upgrade your site's plan from Frappe Cloud Dashboard to increase the usage limit. You won't be able
+			to use your site once the usage limit is exceeded.
+		</p>
+
+		<p class="mt-0 mb-2">Following sites have reached {{ percentage }}% the usage limit:</p>
+		<ul class="list-disc">
+			{%- for site in sites -%}
+			<li class="text-sm font-medium">{{ utils.link(site.name, site.link) }}</li>
+			{%- endfor -%}
+		</ul>
+
+		{{ utils.separator() }}
+		{{ utils.signature() }}
+	</div>
+</td>
+
+{% endblock %}
