@@ -10,7 +10,7 @@
 		>
 			<SectionCard v-if="domains && domains.length">
 				<div
-					class="grid grid-cols-2 px-6 py-3 hover:bg-gray-50 items-center"
+					class="grid grid-cols-4 px-6 py-3 hover:bg-gray-50 items-center"
 					v-for="d in domains"
 					:key="d.domain"
 				>
@@ -25,7 +25,7 @@
 						</a>
 						<span v-else>{{ d.domain }}</span>
 					</div>
-					<div>
+					<div class="col-span-3">
 						<Badge :status="d.status">
 							{{ d.status }}
 						</Badge>
@@ -51,6 +51,15 @@
 							class="ml-8"
 						>
 							Set Primary
+						</Button>
+						<Button
+							@click="redirectToPrimaryDomain(d.domain)"
+							v-if="
+								d.status == 'Active' && !d.primary && !d.redirect_to_primary
+							"
+							class="ml-8"
+						>
+							Setup Redirect
 						</Button>
 					</div>
 
@@ -213,6 +222,13 @@ export default {
 		},
 		async setHostName(domain) {
 			await this.$call('press.api.site.set_host_name', {
+				name: this.site.name,
+				domain: domain
+			});
+			this.fetchDomains();
+		},
+		async redirectToPrimaryDomain(domain) {
+			await this.$call('press.api.site.redirect_to_primary_domain', {
 				name: this.site.name,
 				domain: domain
 			});
