@@ -1,0 +1,81 @@
+{
+	"message": [
+		{ "name": "shared", "shared": true, "status": "Active", "sites": [] },
+		{
+			"name": "bench-0002",
+			"title": "Bhumi Awards Portal",
+			"creation": "2021-06-11 18:27:56.430390",
+			"version": "Nightly",
+			"team": "Administrator",
+			"public": 0,
+			"benches": [
+				{
+					"name": "bench-0002-000005-f1",
+					"status": "Active",
+					"group": "bench-0002"
+				}
+			],
+			"owned_by_team": true,
+			"status": "Active",
+			"sites": [
+				{
+					"name": "bhumi.h.fc.frappe.dev",
+					"status": "Active",
+					"creation": "2021-06-12 01:03:40.413072",
+					"bench": "bench-0002-000005-f1",
+					"current_cpu_usage": 0,
+					"current_database_usage": 0,
+					"current_disk_usage": 0,
+					"trial_end_date": null
+				}
+			]
+		},
+		{
+			"name": "bench-0001",
+			"title": "Frappe Nightly",
+			"creation": "2021-05-07 00:25:31.870995",
+			"version": "Nightly",
+			"team": "Administrator",
+			"public": 1,
+			"benches": [
+				{
+					"name": "bench-0001-000046-f1",
+					"status": "Active",
+					"group": "bench-0001"
+				},
+				{
+					"name": "bench-0001-000007-f1-1",
+					"status": "Active",
+					"group": "bench-0001"
+				}
+			],
+			"owned_by_team": true,
+			"status": "Active",
+			"sites": [
+				{
+					"name": "demo.h.fc.frappe.dev",
+					"status": "Active",
+					"creation": "2021-06-08 16:30:37.307927",
+					"bench": "bench-0001-000007-f1-1",
+					"current_cpu_usage": 0,
+					"current_database_usage": 0,
+					"current_disk_usage": 0,
+					"trial_end_date": null,
+					"update_available": true
+				}
+			]
+		},
+		{
+			"name": "bench-0003",
+			"title": "Personal",
+			"creation": "2021-06-15 17:14:32.492388",
+			"version": "Nightly",
+			"team": "Administrator",
+			"public": 0,
+			"benches": [],
+			"owned_by_team": true,
+			"status": "Awaiting Deploy",
+			"sites": []
+		}
+	]
+}
