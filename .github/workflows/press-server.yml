@@ -76,25 +76,25 @@ jobs:
           pip install -e ${GITHUB_WORKSPACE}
           mkdir ~/scratch && cd ~/scratch
       
-      - name: Cache Backbone
-        uses: actions/cache@v2
-        with: 
-          key: backbone-build-cache
-          path: |
-            ${GITHUB_WORKSPACE}/backbone/packer/images
-            ${GITHUB_WORKSPACE}/backbone/packer/builds
+      # - name: Cache Backbone
+      #   uses: actions/cache@v2
+      #   with: 
+      #     key: backbone-build-cache
+      #     path: |
+      #       ${GITHUB_WORKSPACE}/backbone/packer/images
+      #       ${GITHUB_WORKSPACE}/backbone/packer/builds
 
-      - name: Setup Backbone
-        if: ${{ contains(github.sha, 'travis:rebuild-image') }}
-        run: |
-          sudo rm /usr/local/bin/packer
-          python3 ${GITHUB_WORKSPACE}/backbone/setup.py
+      # - name: Setup Backbone
+      #   if: ${{ contains(github.sha, 'travis:rebuild-image') }}
+      #   run: |
+      #     sudo rm /usr/local/bin/packer
+      #     python3 ${GITHUB_WORKSPACE}/backbone/setup.py
 
-      - name: Build Backbone Image
-        run: |
-          sudo -E su $USER -c '${pythonLocation}/bin/backbone hypervisor build'
-          sudo -E su $USER -c '${pythonLocation}/bin/backbone hypervisor up'
-          sudo -E su $USER -c '${pythonLocation}/bin/backbone hypervisor ssh -c "echo Hello, World"'
+      # - name: Build Backbone Image
+      #   run: |
+      #     sudo -E su $USER -c '${pythonLocation}/bin/backbone hypervisor build'
+      #     sudo -E su $USER -c '${pythonLocation}/bin/backbone hypervisor up'
+      #     sudo -E su $USER -c '${pythonLocation}/bin/backbone hypervisor ssh -c "echo Hello, World"'
       
       - name: Install Black & flake8
         run: |
