@@ -46,7 +46,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
             ${{ runner.os }}-
-      
+
       - name: Cache node modules
         uses: actions/cache@v2
         env:
@@ -70,7 +70,12 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-      
+
+      - name: Install Dependencies
+        run: |
+          pip install -e ${GITHUB_WORKSPACE}
+          mkdir ~/scratch && cd ~/scratch
+
       - name: print versions
         run: |
-          "python3 --version"
+          "python --version"
