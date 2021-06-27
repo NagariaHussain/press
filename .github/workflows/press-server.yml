@@ -76,12 +76,12 @@ jobs:
           pip install -e ${GITHUB_WORKSPACE}
           mkdir ~/scratch && cd ~/scratch
       
-      - name: Cache Backbone
-        uses: actions/cache@v2
-        with: 
-          path: |
-            ${GITHUB_WORKSPACE}/backbone/packer/images
-            ${GITHUB_WORKSPACE}/backbone/packer/builds
+      # - name: Cache Backbone
+      #   uses: actions/cache@v2
+      #   with: 
+      #     path: |
+      #       ${GITHUB_WORKSPACE}/backbone/packer/images
+      #       ${GITHUB_WORKSPACE}/backbone/packer/builds
 
       - name: Setup Backbone
         run: |
