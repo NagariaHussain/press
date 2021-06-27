@@ -75,6 +75,7 @@ jobs:
         run: |
           pip install -e ${GITHUB_WORKSPACE}
           mkdir ~/scratch && cd ~/scratch
+          bash ${GITHUB_WORKSPACE}/.github/helper/install_dependencies.sh
       
       # - name: Cache Backbone
       #   uses: actions/cache@v2
