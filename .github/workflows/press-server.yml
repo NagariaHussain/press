@@ -94,6 +94,6 @@ jobs:
           sudo -E su $USER -c '~/virtualenv/python3.7/bin/backbone hypervisor up'
           sudo -E su $USER -c '~/virtualenv/python3.7/bin/backbone hypervisor ssh -c "echo Hello, World"'
       
-      - name: print versions
+      - name: Install Black & flake8
         run: |
-          "pip --version"
+          pip install flake8 git+https://github.com/adityahase/black
