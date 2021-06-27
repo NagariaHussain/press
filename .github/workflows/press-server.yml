@@ -90,9 +90,11 @@ jobs:
 
       - name: Build Backbone Image
         run: |
-          sudo -E su $USER -c '~/virtualenv/python3.7/bin/backbone hypervisor build'
-          sudo -E su $USER -c '~/virtualenv/python3.7/bin/backbone hypervisor up'
-          sudo -E su $USER -c '~/virtualenv/python3.7/bin/backbone hypervisor ssh -c "echo Hello, World"'
+          ls ${pythonLocation}/bin
+          
+# sudo -E su $USER -c '~/virtualenv/python3.7/bin/backbone hypervisor build'
+# sudo -E su $USER -c '~/virtualenv/python3.7/bin/backbone hypervisor up'
+# sudo -E su $USER -c '~/virtualenv/python3.7/bin/backbone hypervisor ssh -c "echo Hello, World"'
       
       - name: Install Black & flake8
         run: |
