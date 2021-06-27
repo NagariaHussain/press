@@ -75,7 +75,12 @@ jobs:
         run: |
           pip install -e ${GITHUB_WORKSPACE}
           mkdir ~/scratch && cd ~/scratch
+      
+      - name: Setup Backbone
+        run: |
+          sudo rm /usr/local/bin/packer
+          python3 $TRAVIS_BUILD_DIR/backbone/setup.py
 
       - name: print versions
         run: |
-          "python --version"
+          "pip --version"
