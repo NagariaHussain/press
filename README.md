@@ -1,4 +1,4 @@
-![Press CI](https://github.com/hussain/press/actions/workflows/press-server.yml/badge.svg)
+![Press CI](https://github.com/NagariaHussain/press/actions/workflows/press-server.yml/badge.svg)
 
 ## Press
 
