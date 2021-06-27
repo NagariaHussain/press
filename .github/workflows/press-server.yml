@@ -88,6 +88,12 @@ jobs:
           sudo rm /usr/local/bin/packer
           python3 ${GITHUB_WORKSPACE}/backbone/setup.py
 
+      - name: Build Backbone Image
+        run: |
+          sudo -E su $USER -c '~/virtualenv/python3.7/bin/backbone hypervisor build'
+          sudo -E su $USER -c '~/virtualenv/python3.7/bin/backbone hypervisor up'
+          sudo -E su $USER -c '~/virtualenv/python3.7/bin/backbone hypervisor ssh -c "echo Hello, World"'
+      
       - name: print versions
         run: |
           "pip --version"
