@@ -78,8 +78,8 @@ jobs:
       
       - name: Cache Backbone
         uses: actions/cache@v2
-        key: backbone-build-cache
         with: 
+          key: backbone-build-cache
           path: |
             ${GITHUB_WORKSPACE}/backbone/packer/images
             ${GITHUB_WORKSPACE}/backbone/packer/builds
