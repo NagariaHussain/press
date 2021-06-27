@@ -4,7 +4,7 @@ on:
   pull_request:
   workflow_dispatch:
   push:
-    branches: [ master, ci-gh-actions ]
+    branches: [ $default-branch, ci-gh-actions ]
 
 jobs:
   Backbone-Base-Image-Build:
