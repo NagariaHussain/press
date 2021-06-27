@@ -97,3 +97,9 @@ jobs:
       - name: Install Black & flake8
         run: |
           pip install flake8 git+https://github.com/adityahase/black
+        
+      - name: Style with Black
+        run: black --check ${GITHUB_WORKSPACE}/press
+      
+      - name: Style with flake8
+        run: flake8 --ignore W191,E501,W503 ${GITHUB_WORKSPACE}/press 
