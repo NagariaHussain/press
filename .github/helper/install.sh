@@ -6,7 +6,7 @@ cd ~ || exit
 
 pip install frappe-bench
 
-bench init frappe-bench --skip-assets --python "$(which python)" --frappe-path "${GITHUB_WORKSPACE}"
+bench init frappe-bench --python "$(which python)"
 
 mkdir ~/frappe-bench/sites/test_site
 cp ${GITHUB_WORKSPACE}/.travis/mariadb.json ~/frappe-bench/sites/test_site/site_config.json
