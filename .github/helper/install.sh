@@ -37,4 +37,4 @@ sed -i 's/^redis_socketio:/# redis_socketio:/g' Procfile
 bench start &
 bench --site test_site reinstall --yes
 
-bench build --app frappe
+bench build
