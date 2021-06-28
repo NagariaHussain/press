@@ -1,5 +1,6 @@
 {
     "db_host": "localhost",
+    "db_port": "3306",
     "db_name": "test_frappe",
     "db_password": "test_frappe",
     "allow_tests": true,
