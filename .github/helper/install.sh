@@ -34,10 +34,6 @@ sed -i 's/^schedule:/# schedule:/g' Procfile
 sed -i 's/^socketio:/# socketio:/g' Procfile
 sed -i 's/^redis_socketio:/# redis_socketio:/g' Procfile
 
-cd ./apps/frappe || exit
-yarn add node-sass@4.13.1
-cd ../..
-
 bench start &
 bench --site test_site reinstall --yes
 
