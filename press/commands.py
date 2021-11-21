@@ -11,6 +11,12 @@ def start_ngrok_and_set_webhook(context):
 	from pyngrok import ngrok
 	from press.api.billing import get_stripe
 
+	# Set ngrok auth token
+	auth_token = frappe.db.get_single_value("Press Settings", "ngrok_auth_token")
+
+	if auth_token:
+		ngrok.set_auth_token(auth_token)
+
 	site = get_site(context)
 	frappe.init(site=site)
 	frappe.connect()
