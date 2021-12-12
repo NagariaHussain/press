@@ -1,6 +1,8 @@
 <template>
 	<div class="pt-8 pb-20">
 		<div class="px-4 sm:px-8">
+			<DashboardSummary />
+
 			<h1 class="sr-only">Dashboard</h1>
 			<div v-if="!$account.team.enabled">
 				<Alert title="Your account is disabled">
@@ -139,10 +141,13 @@
 </template>
 <script>
 import SiteList from './SiteList.vue';
+import DashboardSummary from '@/components/DashboardSummary.vue';
+
 export default {
 	name: 'Sites',
 	props: ['bench'],
 	components: {
+		DashboardSummary,
 		SiteList,
 		PrepaidCreditsDialog: () => import('@/components/PrepaidCreditsDialog.vue')
 	},
