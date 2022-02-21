@@ -60,7 +60,7 @@
 				</Button>
 			</div>
 			<div
-				class="flex items-center justify-between py-3"
+				class="flex items-center space-x-2 py-3"
 				v-if="$account.team.database_access_enabled"
 			>
 				<Button

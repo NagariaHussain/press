@@ -31,7 +31,7 @@
 
 		<ErrorMessage class="mt-3" :error="$resourceErrors || error" />
 
-		<div class="mt-2">
+		<div class="mt-2 flex flex-row items-end space-x-2">
 			<Button
 				v-if="
 					databaseAccessInfo && !databaseAccessInfo.is_database_access_enabled
@@ -40,6 +40,16 @@
 				:loading="$resources.enableDatabaseAccess.loading || pollingAgentJob"
 				type="primary"
 				>Enable Access</Button
+			>
+			<Button
+				v-if="
+					databaseAccessInfo && databaseAccessInfo.is_database_access_enabled
+				"
+				href="http://localhost:4203"
+				rel="noopener noreferrer"
+				target="_blank"
+				@click="connectToDB"
+				>Access via Browser</Button
 			>
 
 			<Button
@@ -119,6 +129,10 @@ export default {
 	},
 	components: { ClickToCopyField },
 	methods: {
+		connectToDB() {
+			let url = 'http://localhost:4203';
+			window.open(url, '_blank');
+		},
 		dialogClosed() {
 			this.$emit('update:show', null);
 		},
