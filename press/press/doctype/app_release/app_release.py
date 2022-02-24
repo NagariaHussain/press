@@ -8,10 +8,11 @@ import shutil
 import subprocess
 import frappe
 
+from press.utils import log_error
 from frappe.model.document import Document
 from frappe.model.naming import make_autoname
 from press.api.github import get_access_token
-from press.utils import log_error
+
 from press.press.doctype.app_source.app_source import AppSource
 
 
@@ -100,6 +101,7 @@ class AppRelease(Document):
 		self.output += self.run(f"git fetch --depth 1 origin {self.hash}")
 		self.output += self.run(f"git checkout {self.hash}")
 		self.output += self.run(f"git reset --hard {self.hash}")
+
 
 	def on_trash(self):
 		if self.clone_directory and os.path.exists(self.clone_directory):
