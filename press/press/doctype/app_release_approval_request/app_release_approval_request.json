@@ -13,7 +13,17 @@
   "app",
   "reviewed_by",
   "section_break_8",
-  "reason_for_rejection"
+  "reason_for_rejection",
+  "app_release_screening_section",
+  "result",
+  "result_html",
+  "result_html_rendered",
+  "requirements",
+  "baseline_request",
+  "diff_result",
+  "diff_requirements",
+  "baseline_results",
+  "baseline_requirements"
  ],
  "fields": [
   {
@@ -80,11 +90,62 @@
    "fieldtype": "Link",
    "label": "Reviewed By",
    "options": "User"
+  },
+  {
+   "fieldname": "app_release_screening_section",
+   "fieldtype": "Section Break",
+   "label": "App Release Screening"
+  },
+  {
+   "fieldname": "result",
+   "fieldtype": "Code",
+   "label": "Result"
+  },
+  {
+   "fieldname": "result_html",
+   "fieldtype": "Code",
+   "label": "Result HTML"
+  },
+  {
+   "fieldname": "result_html_rendered",
+   "fieldtype": "HTML",
+   "label": "Result HTML Rendered"
+  },
+  {
+   "fieldname": "requirements",
+   "fieldtype": "Code",
+   "label": "Requirements"
+  },
+  {
+   "fieldname": "baseline_request",
+   "fieldtype": "Link",
+   "label": "Baseline Request",
+   "options": "App Release Approval Request"
+  },
+  {
+   "fieldname": "diff_result",
+   "fieldtype": "Code",
+   "label": "Diff Result"
+  },
+  {
+   "fieldname": "diff_requirements",
+   "fieldtype": "Code",
+   "label": "Diff Requirements"
+  },
+  {
+   "fieldname": "baseline_results",
+   "fieldtype": "Code",
+   "label": "Baseline Results"
+  },
+  {
+   "fieldname": "baseline_requirements",
+   "fieldtype": "Code",
+   "label": "Baseline Requirements"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-08-17 19:29:14.583247",
+ "modified": "2022-02-24 20:58:26.169932",
  "modified_by": "Administrator",
  "module": "Press",
  "name": "App Release Approval Request",
@@ -105,6 +166,7 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
+ "states": [],
  "track_changes": 1,
  "track_seen": 1
 }
