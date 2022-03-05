@@ -80,7 +80,9 @@ def options_for_quick_install(marketplace_app: str) -> Dict:
 	# Note: Consider both public & private benches
 	# 1. Get the list of team's active benches where the app source is installed
 	# 2. Gather sites with bench in benches found in step 1
-	app_name = frappe.db.get_value("Marketplace App", marketplace_app, "app")
+	app_name, title = frappe.db.get_value(
+		"Marketplace App", marketplace_app, ["app", "title"]
+	)
 	active_benches = frappe.get_all(
 		"Bench", filters={"team": team, "status": "Active"}, pluck="name"
 	)
@@ -105,6 +107,8 @@ def options_for_quick_install(marketplace_app: str) -> Dict:
 	)
 
 	options.sites = sites
+	options.title = title
+	options.app_name = app_name
 	return options
 
 
