@@ -69,7 +69,7 @@ def options_for_quick_install(marketplace_app: str) -> Dict:
 
 	release_groups = []
 	for rg in candidate_rgs:
-		# Check if the app source is already there
+		# Check if the app is already there
 		if not rg_has_marketplace_app(rg.name, marketplace_app):
 			rg.available_app_source = marketplace_app_versions[rg.version]
 			release_groups.append(rg)
@@ -80,6 +80,31 @@ def options_for_quick_install(marketplace_app: str) -> Dict:
 	# Note: Consider both public & private benches
 	# 1. Get the list of team's active benches where the app source is installed
 	# 2. Gather sites with bench in benches found in step 1
+	app_name = frappe.db.get_value("Marketplace App", marketplace_app, "app")
+	active_benches = frappe.get_all(
+		"Bench", filters={"team": team, "status": "Active"}, pluck="name"
+	)
+	benches_with_app_installed = frappe.get_all(
+		"Bench App",
+		filters={"app": app_name, "parent": ("in", active_benches)},
+		pluck="parent",
+	)
+
+	sites_with_app_installed = frappe.get_all(
+		"Site App", filters={"app": app_name}, pluck="parent"
+	)
+
+	sites = frappe.get_all(
+		"Site",
+		filters={
+			"bench": ("in", benches_with_app_installed),
+			"status": "Active",
+			"name": ("not in", sites_with_app_installed),
+		},
+		pluck="name",
+	)
+
+	options.sites = sites
 	return options
 
 
