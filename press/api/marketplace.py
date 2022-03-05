@@ -40,6 +40,57 @@ def developer_toggle_allowed():
 
 
 @frappe.whitelist()
+def options_for_quick_install(marketplace_app: str) -> Dict:
+	team = get_current_team()
+	options = frappe._dict()
+
+	# Get candidate release groups
+	# 1. Get the app (source, version) for this marketplace app
+	marketplace_app_versions = frappe.get_all(
+		"Marketplace App Version",
+		filters={"parent": marketplace_app},
+		fields=["version", "source"],
+	)
+
+	# [{"version": "x", "source": "y"}] => {"x": "y"}
+	marketplace_app_versions = {
+		version_info.version: version_info.source for version_info in marketplace_app_versions
+	}
+
+	# 2. Get this team's release groups (non-disabled) and
+	# check if release group ka version has a corresponding
+	# app source source
+	available_on_versions = marketplace_app_versions.keys()
+	candidate_rgs = frappe.get_all(
+		"Release Group",
+		filters={"version": ("in", available_on_versions), "enabled": True, "team": team},
+		fields=["name", "title", "version"],
+	)
+
+	release_groups = []
+	for rg in candidate_rgs:
+		# Check if the app source is already there
+		if not rg_has_marketplace_app(rg.name, marketplace_app):
+			rg.available_app_source = marketplace_app_versions[rg.version]
+			release_groups.append(rg)
+
+	options.release_groups = release_groups
+
+	# Get sites where the bench has the app but site doesn't
+	# Note: Consider both public & private benches
+	# 1. Get the list of team's active benches where the app source is installed
+	# 2. Gather sites with bench in benches found in step 1
+	return options
+
+
+def rg_has_marketplace_app(release_group, marketplace_app):
+	app_name = frappe.db.get_value("Marketplace App", marketplace_app, "app")
+	return frappe.db.exists(
+		"Release Group App", {"parent": release_group, "app": app_name}
+	)
+
+
+@frappe.whitelist()
 def frappe_versions():
 	"""Return a list of Frappe Version names"""
 	return frappe.get_all("Frappe Version", pluck="name", order_by="name desc")
